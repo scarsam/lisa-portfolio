@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource/chivo": "^4.2.2",
+    "@fontsource/inter": "^4.2.2",
     "@tailwindcss/typography": "^0.4.0",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",

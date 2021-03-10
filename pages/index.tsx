@@ -37,10 +37,8 @@ export async function getStaticProps() {
 export default function ServicesPage(props) {
   console.log(props);
   return (
-    <>
-      <p>Nav</p>
+    <div className="container mx-auto">
       <h1>PROJECTS</h1>
-      <p>footer</p>
-    </>
+    </div>
   );
 }
