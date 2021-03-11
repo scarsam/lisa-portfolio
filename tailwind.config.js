@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       colors: {
         "black-1": "#010101",
+        "copy-1": "#525252",
+        "copy-link": "#8393C1",
       },
       fontFamily: {
         sans: ["Chivo", ...defaultTheme.fontFamily.sans],

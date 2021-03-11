@@ -7,7 +7,7 @@ import Footer from "components/footer";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="bg-black-1 antialiased text-white h-screen">
+    <div className="bg-black-1 antialiased text-white min-h-screen">
       <Navigation />
       <Component {...pageProps} />
       <Footer />
