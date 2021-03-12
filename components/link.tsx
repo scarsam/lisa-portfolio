@@ -5,11 +5,13 @@ const Link = ({
   href,
   className,
   white,
+  large,
 }: {
   text: string;
   href: string;
   className?: string;
   white?: boolean;
+  large?: boolean;
 }) => {
   return (
     <NextLink href={href}>
@@ -19,7 +21,9 @@ const Link = ({
         } ${className}`}
       >
         {text}
-        <span className="text-lg">&#8594;</span>
+        <span className={`${large ? "text-2xl pl-1" : "text-lg pl-0.5"}`}>
+          &#8594;
+        </span>
       </a>
     </NextLink>
   );

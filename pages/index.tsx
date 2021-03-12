@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import { GraphQLClient, gql } from "graphql-request";
@@ -38,20 +39,49 @@ export async function getStaticProps() {
   };
 }
 
-export default function ServicesPage({ homes }) {
+export default function Home({ homes }) {
   console.log(homes);
+
+  const arrowStyles: CSSProperties = {
+    position: "absolute",
+    zIndex: 2,
+    top: 0,
+    bottom: 0,
+    width: "50%",
+    height: "100%",
+  };
 
   return (
     <div className="container mx-auto my-auto">
       <div className="grid grid-cols-12">
         {homes.map((project) => (
           <figure className="card mb-28 col-start-2 col-span-10">
-            <div>
+            <div className="carousel">
               <Carousel
                 showThumbs={false}
                 showIndicators={false}
                 showStatus={false}
                 infiniteLoop={true}
+                renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                  hasPrev && (
+                    <button
+                      type="button"
+                      onClick={onClickHandler}
+                      title={label}
+                      style={{ ...arrowStyles, left: 0 }}
+                    />
+                  )
+                }
+                renderArrowNext={(onClickHandler, hasNext, label) =>
+                  hasNext && (
+                    <button
+                      type="button"
+                      onClick={onClickHandler}
+                      title={label}
+                      style={{ ...arrowStyles, right: 0 }}
+                    />
+                  )
+                }
               >
                 {project.images.map((image) => (
                   <div style={{ width: "1135px", height: "635px" }}>
@@ -70,7 +100,7 @@ export default function ServicesPage({ homes }) {
                 <p className="text-lg">{project.title}</p>
                 <p className="text-lg text-copy-1">{project.description}</p>
               </figcaption>
-              <Link href={project.link} text="Overview" />
+              <Link href={`/${project.link}`} text="Overview" />
             </div>
           </figure>
         ))}
