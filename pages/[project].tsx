@@ -1,46 +1,59 @@
-import { GetStaticProps } from "next";
 import Image from "next/image";
-import { GraphQLClient, gql } from "graphql-request";
-import Link from "components/link";
+import { ProjectApi, ProjectsApi } from "lib/api";
+import HorizontalComponent from "components/horizontal";
+import VerticalComponent from "components/vertical";
 
-export async function getStaticProps() {
-  const graphcms = new GraphQLClient(
-    "https://api-eu-central-1.graphcms.com/v2/ckm2wkn3bu3sm01xhe9fbat23/master",
-    {
-      headers: {
-        authorization: `Bearer ${process.env.GRAPHCMS_API_TOKEN}`,
-      },
-    },
-  );
+export async function getStaticPaths() {
+  const projects = await ProjectsApi();
 
-  const query = gql`
-    {
-      homes {
-        title
-        link
-        description
-        images {
-          url
-          id
-        }
-      }
-    }
-  `;
+  const paths = projects.map((project) => ({
+    params: { project: project.slug },
+  }));
 
-  const { homes } = await graphcms.request(query);
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const { title, project } = await ProjectApi(params.project);
 
   return {
     props: {
-      homes,
+      title,
+      project,
     },
   };
 }
 
-export default function Project({ homes }) {
+export default function Project({ title, project }) {
   return (
     <div className="container mx-auto my-auto">
-      <div className="grid grid-cols-12">
-        <h1>This is a project page</h1>
+      <div className="grid-cols-12 grid">
+        {project.map((component) =>
+          component.__typename === "HorizontalImage" ? (
+            <div
+              key={component.id}
+              className="grid col-start-2 col-span-10  mb-28"
+            >
+              <HorizontalComponent
+                horizontalText={component.horizontalText}
+                image={component.image}
+              />
+            </div>
+          ) : (
+            <div
+              key={component.id}
+              className="grid col-start-2 col-span-10 grid-cols-12 mb-28"
+            >
+              <VerticalComponent
+                verticalText={component.verticalText}
+                image={component.image}
+              />
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,13 @@ import Footer from "components/footer";
 function MyApp({ Component, pageProps }) {
   return (
     <div className="bg-black-1 antialiased text-white min-h-screen">
+      <style global jsx>
+        {`
+          html {
+            scroll-behavior: smooth;
+          }
+        `}
+      </style>
       <Navigation />
       <Component {...pageProps} />
       <Footer />

@@ -1,47 +1,22 @@
 import { CSSProperties } from "react";
-import { GetStaticProps } from "next";
-import Image from "next/image";
-import { GraphQLClient, gql } from "graphql-request";
+import { ProjectsApi } from "lib/api";
 import Link from "components/link";
+import Image from "components/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 export async function getStaticProps() {
-  const graphcms = new GraphQLClient(
-    "https://api-eu-central-1.graphcms.com/v2/ckm2wkn3bu3sm01xhe9fbat23/master",
-    {
-      headers: {
-        authorization: `Bearer ${process.env.GRAPHCMS_API_TOKEN}`,
-      },
-    },
-  );
-
-  const query = gql`
-    {
-      homes {
-        title
-        link
-        description
-        images {
-          url
-          id
-        }
-      }
-    }
-  `;
-
-  const { homes } = await graphcms.request(query);
+  const projects = await ProjectsApi();
 
   return {
     props: {
-      homes,
+      projects,
     },
   };
 }
 
-export default function Home({ homes }) {
-  console.log(homes);
-
+export default function Home({ projects }) {
+  console.log(projects);
   const arrowStyles: CSSProperties = {
     position: "absolute",
     zIndex: 2,
@@ -52,10 +27,10 @@ export default function Home({ homes }) {
   };
 
   return (
-    <div className="container mx-auto my-auto">
+    <div id="work" className="container mx-auto my-auto">
       <div className="grid grid-cols-12">
-        {homes.map((project) => (
-          <figure className="card mb-28 col-start-2 col-span-10">
+        {projects.map(({ overview, slug }) => (
+          <figure key={slug} className="card mb-28 col-start-2 col-span-10">
             <div className="carousel">
               <Carousel
                 showThumbs={false}
@@ -83,24 +58,22 @@ export default function Home({ homes }) {
                   )
                 }
               >
-                {project.images.map((image) => (
-                  <div style={{ width: "1135px", height: "635px" }}>
-                    <Image
-                      key={image.id}
-                      src={image.url}
-                      alt="Picture of the author"
-                      layout="fill"
-                    />
+                {overview.images.map((image) => (
+                  <div
+                    key={image.id}
+                    style={{ width: "1135px", height: "635px" }}
+                  >
+                    <Image image={image} alt="Picture of the author" />
                   </div>
                 ))}
               </Carousel>
             </div>
             <div className="flex justify-between pt-5">
               <figcaption>
-                <p className="text-lg">{project.title}</p>
-                <p className="text-lg text-copy-1">{project.description}</p>
+                <p className="text-lg">{overview.title}</p>
+                <p className="text-lg text-copy-1">{overview.description}</p>
               </figcaption>
-              <Link href={`/${project.link}`} text="Overview" />
+              <Link href={`/${slug}`} text="Overview" />
             </div>
           </figure>
         ))}
