@@ -40,7 +40,7 @@ export default function About() {
   return (
     <div className="container mx-auto my-auto">
       <div className="grid grid-cols-12">
-        <h1>This is going to be the about page</h1>
+        <h1>This is going to be the about page!!!!!!!!!!!!!</h1>
       </div>
     </div>
   );
