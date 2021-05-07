@@ -6,8 +6,8 @@ const HorizonalComponent = ({ horizontalText, image }) => {
     <>
       <Image image={image} alt="Picture of the author" />
       <div className="grid gap-2 grid-cols-12 pt-4">
-        {horizontalText.map((content) => (
-          <div className="col-span-3 text-lg">
+        {horizontalText.map((content, index) => (
+          <div key={index} className="col-span-3 text-lg">
             <ReactMarkdown source={content} />
           </div>
         ))}
