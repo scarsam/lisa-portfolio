@@ -24,6 +24,7 @@ export async function getStaticProps({ params }) {
       title,
       project,
     },
+    revalidate: 30,
   };
 }
 
