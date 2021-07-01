@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .cms-content > h1,
+  .cms-content > h2,
+  .cms-content > h3,
+  .cms-content > h4,
+  .cms-content > h5 {
+    @apply font-normal mb-1;
+  }
+  .cms-content > p {
+    @apply font-light;
+  }
+}

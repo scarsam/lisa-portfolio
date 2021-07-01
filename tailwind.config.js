@@ -22,7 +22,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: { gridColumn: ["last", "first"] },
   },
   plugins: [require("@tailwindcss/typography")],
 };

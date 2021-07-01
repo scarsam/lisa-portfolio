@@ -6,7 +6,13 @@ const ImageComponent = ({ image, alt, horiztonal = true }) => {
     : { width: "532px", height: "762px" };
   return (
     <div className="relative" key={image.id} style={{ ...dimensions }}>
-      <Image src={image.url} alt={alt} layout="fill" />
+      <Image
+        placeholder="blur"
+        blurDataURL={image.url}
+        src={image.url}
+        alt={alt}
+        layout="fill"
+      />
     </div>
   );
 };

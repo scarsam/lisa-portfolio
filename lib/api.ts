@@ -39,12 +39,25 @@ const ProjectApi = async (slug) => {
         project {
           __typename
           ... on HorizontalImage {
+            __typename
             id
             horizontalText
             image {
               id
               url
             }
+          }
+          ... on HorizontalImageOnlyComponent {
+            __typename
+            id
+            image {
+              url
+            }
+          }
+          ... on Headline {
+            __typename
+            id
+            headline
           }
           ... on VerticalImage {
             __typename

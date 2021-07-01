@@ -1,6 +1,9 @@
-import "@fontsource/chivo";
+import "@fontsource/chivo/400.css";
+import "@fontsource/chivo/300.css";
 import "@fontsource/inter";
-import "tailwindcss/tailwind.css";
+import "../styles/tailwind.css";
+
+// import "tailwindcss/tailwind.css";
 
 import Navigation from "components/navigation";
 import Footer from "components/footer";
