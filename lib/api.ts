@@ -9,6 +9,24 @@ const graphcms = new GraphQLClient(
   },
 );
 
+const AboutApi = async () => {
+  const query = gql`
+    query getAbout {
+      about(where: { id: "ckqlq8rawd4zt0b12pa4p7kle" }) {
+        id
+        about
+        images {
+          id
+          url
+        }
+      }
+    }
+  `;
+
+  const { about } = await graphcms.request(query);
+  return about;
+};
+
 const ProjectsApi = async () => {
   const query = gql`
     query getProjects {
@@ -76,4 +94,4 @@ const ProjectApi = async (slug) => {
   return project;
 };
 
-export { ProjectApi, ProjectsApi };
+export { ProjectApi, ProjectsApi, AboutApi };

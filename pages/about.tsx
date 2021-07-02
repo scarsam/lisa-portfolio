@@ -1,46 +1,43 @@
-import { GetStaticProps } from "next";
+import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import { GraphQLClient, gql } from "graphql-request";
-import Link from "components/link";
+import { AboutApi } from "lib/api";
 
-// export async function getStaticProps() {
-//   const graphcms = new GraphQLClient(
-//     "https://api-eu-central-1.graphcms.com/v2/ckm2wkn3bu3sm01xhe9fbat23/master",
-//     {
-//       headers: {
-//         authorization: `Bearer ${process.env.GRAPHCMS_API_TOKEN}`,
-//       },
-//     },
-//   );
+export async function getStaticProps() {
+  const { about, images } = await AboutApi();
 
-//   const query = gql`
-//     {
-//       homes {
-//         title
-//         link
-//         description
-//         images {
-//           url
-//           id
-//         }
-//       }
-//     }
-//   `;
+  return {
+    props: {
+      about,
+      images,
+    },
+    revalidate: 15,
+  };
+}
 
-//   const { homes } = await graphcms.request(query);
-
-//   return {
-//     props: {
-//       homes,
-//     },
-//   };
-// }
-
-export default function About() {
+export default function About({ about, images }) {
   return (
     <div className="container mx-auto my-auto">
       <div className="grid grid-cols-12">
-        <h1>This is going to be the about page!!!!!!!!!!!!!</h1>
+        <div className="col-start-2 col-end-6 text-3xl cms-content prose text-white">
+          <ReactMarkdown source={about} />
+        </div>
+        <div className="col-start-7 col-end-11">
+          {images.map((image) => (
+            <div
+              className="relative mb-14"
+              key={image.id}
+              style={{ width: "532px", height: "762px" }}
+            >
+              <Image
+                placeholder="blur"
+                blurDataURL={image.url}
+                src={image.url}
+                alt="Lisa Skole"
+                layout="fill"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

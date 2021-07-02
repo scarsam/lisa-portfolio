@@ -12,7 +12,7 @@ const HorizonalComponent = ({ horizontalText, image }) => {
             className={`${
               horizontalText.length > 4
                 ? "col-span-2 first:col-span-3 last:col-span-4"
-                : "col-span-3"
+                : "col-span-3 prose text-white"
             } text-lg cms-content`}
           >
             <ReactMarkdown source={content} />
