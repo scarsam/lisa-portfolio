@@ -23,13 +23,13 @@ export default function Home({ projects }) {
     top: 0,
     bottom: 0,
     width: "50%",
-    height: "100%",
+    height: "635px",
   };
 
   return (
     <div id="work" className="container mx-auto my-auto">
       <div className="grid grid-cols-12">
-        {projects.map(({ overview, slug }) => (
+        {projects.map(({ overviews, slug }) => (
           <figure key={slug} className="card mb-28 col-start-2 col-span-10">
             <div className="carousel">
               <Carousel
@@ -40,40 +40,58 @@ export default function Home({ projects }) {
                 renderArrowPrev={(onClickHandler, hasPrev, label) =>
                   hasPrev && (
                     <button
+                      className="prev-button opacity-0 hover:opacity-100 transition-opacity"
                       type="button"
                       onClick={onClickHandler}
                       title={label}
                       style={{ ...arrowStyles, left: 0 }}
-                    />
+                    >
+                      <span className="button-text text-3xl right-20 relative">
+                        &#8592; Previous
+                      </span>
+                    </button>
                   )
                 }
                 renderArrowNext={(onClickHandler, hasNext, label) =>
                   hasNext && (
                     <button
+                      className="next-button opacity-0 hover:opacity-100 transition-opacity"
                       type="button"
                       onClick={onClickHandler}
                       title={label}
                       style={{ ...arrowStyles, right: 0 }}
-                    />
+                    >
+                      <span className="button-text text-3xl left-20 relative">
+                        Next &#8594;{" "}
+                      </span>
+                    </button>
                   )
                 }
               >
-                {overview.images.map((image) => (
-                  <div
-                    key={image.id}
-                    style={{ width: "1135px", height: "635px" }}
-                  >
-                    <Image image={image} alt="Picture of the author" />
-                  </div>
+                {overviews.map((overview) => (
+                  <>
+                    <div
+                      className="image-wrapper"
+                      key={overview?.image.id}
+                      style={{ width: "1135px", height: "635px" }}
+                    >
+                      <Image
+                        image={overview?.image}
+                        alt="Picture of the author"
+                      />
+                    </div>
+                    <div className="flex justify-between pt-5">
+                      <figcaption className="text-left">
+                        <p className="text-lg">{overview.title}</p>
+                        <p className="text-lg text-copy-1">
+                          {overview.description}
+                        </p>
+                      </figcaption>
+                      <Link href={`/${slug}`} text="Overview" />
+                    </div>
+                  </>
                 ))}
               </Carousel>
-            </div>
-            <div className="flex justify-between pt-5">
-              <figcaption>
-                <p className="text-lg">{overview.title}</p>
-                <p className="text-lg text-copy-1">{overview.description}</p>
-              </figcaption>
-              <Link href={`/${slug}`} text="Overview" />
             </div>
           </figure>
         ))}

@@ -12,7 +12,7 @@ const graphcms = new GraphQLClient(
 const AboutApi = async () => {
   const query = gql`
     query getAbout {
-      about(where: { id: "ckqlq8rawd4zt0b12pa4p7kle" }) {
+      about(where: { id: "ckqqlrx9s20ez0b04phx874ug" }) {
         id
         about
         images {
@@ -32,10 +32,10 @@ const ProjectsApi = async () => {
     query getProjects {
       projects {
         slug
-        overview {
+        overviews {
           description
           title
-          images {
+          image {
             url
             id
           }

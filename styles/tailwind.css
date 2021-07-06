@@ -8,9 +8,12 @@
   .cms-content > h3,
   .cms-content > h4,
   .cms-content > h5 {
-    @apply font-normal mb-1 text-white;
+    @apply font-normal mb-1 text-white text-lg;
   }
   .cms-content > p {
     @apply font-light;
+  }
+  .carousel-slider:hover .image-wrapper {
+    @apply opacity-50 bg-black transition-opacity;
   }
 }
