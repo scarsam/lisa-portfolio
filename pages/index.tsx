@@ -40,13 +40,13 @@ export default function Home({ projects }) {
                 renderArrowPrev={(onClickHandler, hasPrev, label) =>
                   hasPrev && (
                     <button
-                      className="prev-button opacity-0 hover:opacity-100 transition-opacity"
+                      className="prev-button opacity-0 hover:opacity-75 transition-opacity"
                       type="button"
                       onClick={onClickHandler}
                       title={label}
                       style={{ ...arrowStyles, left: 0 }}
                     >
-                      <span className="button-text text-3xl right-20 relative">
+                      <span className="button-text text-3xl right-20 relative bg-black p-3">
                         &#8592; Previous
                       </span>
                     </button>
@@ -55,13 +55,13 @@ export default function Home({ projects }) {
                 renderArrowNext={(onClickHandler, hasNext, label) =>
                   hasNext && (
                     <button
-                      className="next-button opacity-0 hover:opacity-100 transition-opacity"
+                      className="next-button opacity-0 hover:opacity-75 transition-opacity"
                       type="button"
                       onClick={onClickHandler}
                       title={label}
                       style={{ ...arrowStyles, right: 0 }}
                     >
-                      <span className="button-text text-3xl left-20 relative">
+                      <span className="button-text text-3xl left-20 relative bg-black p-3">
                         Next &#8594;{" "}
                       </span>
                     </button>
