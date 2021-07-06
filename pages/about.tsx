@@ -17,7 +17,7 @@ export async function getStaticProps() {
 export default function About({ about, images }) {
   return (
     <div className="container mx-auto my-auto">
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 mb-28">
         <div className="col-start-2 col-end-6 text-3xl cms-content prose text-white">
           <ReactMarkdown source={about} />
         </div>

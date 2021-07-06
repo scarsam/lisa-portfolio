@@ -3,27 +3,25 @@ import NextLink from "next/link";
 
 const Navigation: React.VFC = () => {
   return (
-    <nav>
-      <header className="pt-8 pb-24 grid grid-cols-12 gap-6 justify-between container mx-auto">
+    <nav className="grid grid-cols-12 ">
+      <header className="pt-8 pb-24 flex col-span-12 justify-between container mx-auto">
         <NextLink href="/">
           <a className="text-3xl col-span-3">
-            <h1>Nice to meet you 👋️</h1>
+            <h1>
+              Nice to <span className="block md:inline">meet you 👋️</span>
+            </h1>
           </a>
         </NextLink>
-        <Link
-          white
-          large
-          className="col-start-11 col-span-1 text-3xl"
-          href="/#work"
-          text="Work"
-        />
-        <Link
-          white
-          large
-          className="col-span-1 text-3xl"
-          href="/about"
-          text="Info"
-        />
+        <div className="flex flex-col md:flex-row items-end">
+          <Link
+            white
+            large
+            className="text-3xl md:pr-4"
+            href="/#work"
+            text="Work"
+          />
+          <Link white large className="text-3xl" href="/about" text="Info" />
+        </div>
       </header>
     </nav>
   );
