@@ -13,7 +13,7 @@
   .cms-content > p {
     @apply font-light;
   }
-  /* .carousel-slider:hover .image-wrapper {
+  .carousel-slider:hover .image-wrapper {
     @apply opacity-50 bg-black transition-opacity;
-  } */
+  }
 }
