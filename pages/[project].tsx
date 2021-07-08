@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import { ProjectApi, ProjectsApi } from "lib/api";
 import HorizontalComponent from "components/horizontal";
 import VerticalComponent from "components/vertical";
@@ -21,6 +22,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
+      slug: params.project,
       title,
       project,
     },
@@ -28,7 +30,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Project({ title, project }) {
+export default function Project({ slug, title, project }) {
   const renderComponent = (component) => {
     switch (component.__typename) {
       case "HorizontalImage":
@@ -64,14 +66,41 @@ export default function Project({ title, project }) {
   };
 
   return (
-    <div className="container mx-auto my-auto">
-      <div className="grid-cols-12 grid">
-        {project.map((component) => (
-          <div key={component.id} className="grid col-start-2 col-span-10">
-            {renderComponent(component)}
-          </div>
-        ))}
+    <>
+      <NextSeo
+        title={`Graphic Designer and Art Director Lisa Skole | ${title}`}
+        description="She specialize in digital design and the fluid world between product, identity and editorial. Attention to detail and the beauty of the process is essential in her design thinking and she’s striving to make things simple and intuitive."
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "/lisa-skole-favicon.svg",
+          },
+        ]}
+        openGraph={{
+          type: "website",
+          url: `https://www.lisaskole.se/${slug}`,
+          title: "Graphic Designer and Art Director Lisa Skole",
+          description:
+            "This links to the portfolio of Graphic designer and Art Director Lisa Skole. She specialize in digital design and the fluid world between product, identity and editorial. Attention to detail and the beauty of the process is essential in her design thinking and she’s striving to make things simple and intuitive. ",
+          images: [
+            {
+              url: "/lisa-skole-meta.jpg",
+              width: 1200,
+              height: 628,
+              alt: "Nice to meet you",
+            },
+          ],
+        }}
+      />
+      <div className="container mx-auto my-auto">
+        <div className="grid-cols-12 grid">
+          {project.map((component) => (
+            <div key={component.id} className="grid col-start-2 col-span-10">
+              {renderComponent(component)}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

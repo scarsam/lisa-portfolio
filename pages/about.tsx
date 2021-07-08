@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { AboutApi } from "lib/api";
@@ -16,29 +17,56 @@ export async function getStaticProps() {
 
 export default function About({ about, images }) {
   return (
-    <div className="container mx-auto my-auto">
-      <div className="grid grid-cols-12 mb-28">
-        <div className="col-start-2 col-end-6 text-3xl cms-content prose text-white">
-          <ReactMarkdown source={about} />
-        </div>
-        <div className="col-start-7 col-end-11">
-          {images.map((image) => (
-            <div
-              className="relative mb-14"
-              key={image.id}
-              style={{ width: "532px", height: "762px" }}
-            >
-              <Image
-                placeholder="blur"
-                blurDataURL={image.url}
-                src={image.url}
-                alt="Lisa Skole"
-                layout="fill"
-              />
-            </div>
-          ))}
+    <>
+      <NextSeo
+        title="Graphic Designer and Art Director Lisa Skole | About"
+        description="She specialize in digital design and the fluid world between product, identity and editorial. Attention to detail and the beauty of the process is essential in her design thinking and she’s striving to make things simple and intuitive."
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "/lisa-skole-favicon.svg",
+          },
+        ]}
+        openGraph={{
+          type: "website",
+          url: `https://www.lisaskole.se/about`,
+          title: "Graphic Designer and Art Director Lisa Skole",
+          description:
+            "This links to the portfolio of Graphic designer and Art Director Lisa Skole. She specialize in digital design and the fluid world between product, identity and editorial. Attention to detail and the beauty of the process is essential in her design thinking and she’s striving to make things simple and intuitive. ",
+          images: [
+            {
+              url: "/lisa-skole-meta.jpg",
+              width: 1200,
+              height: 628,
+              alt: "Nice to meet you",
+            },
+          ],
+        }}
+      />
+      <div className="container mx-auto my-auto">
+        <div className="grid grid-cols-12 mb-28">
+          <div className="col-start-2 col-end-6 text-3xl cms-content prose text-white">
+            <ReactMarkdown source={about} />
+          </div>
+          <div className="col-start-7 col-end-11">
+            {images.map((image) => (
+              <div
+                className="relative mb-14"
+                key={image.id}
+                style={{ width: "532px", height: "762px" }}
+              >
+                <Image
+                  placeholder="blur"
+                  blurDataURL={image.url}
+                  src={image.url}
+                  alt="Lisa Skole"
+                  layout="fill"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
