@@ -16,4 +16,8 @@
   .carousel-slider:hover .image-wrapper {
     @apply opacity-50 bg-black transition-opacity;
   }
+  .prev-button,
+  .next-button {
+    @apply absolute z-10 top-0 bottom-0 w-1/2 h-[635px];
+  }
 }

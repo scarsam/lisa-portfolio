@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import { CSSProperties } from "react";
 import { ProjectsApi } from "lib/api";
 import Link from "components/link";
 import Image from "components/image";
@@ -18,15 +17,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ projects }) {
-  const arrowStyles: CSSProperties = {
-    position: "absolute",
-    zIndex: 2,
-    top: 0,
-    bottom: 0,
-    width: "50%",
-    height: "635px",
-  };
-
   return (
     <>
       <NextSeo
@@ -67,13 +57,12 @@ export default function Home({ projects }) {
                   renderArrowPrev={(onClickHandler, hasPrev, label) =>
                     hasPrev && (
                       <button
-                        className="prev-button opacity-0 hover:opacity-100 transition-opacity"
+                        className="prev-button opacity-0 hover:opacity-100 transition-opacity left-0"
                         type="button"
                         onClick={onClickHandler}
                         title={label}
-                        style={{ ...arrowStyles, left: 0 }}
                       >
-                        <span className="button-text text-3xl right-20 relative">
+                        <span className="button-text text-3xl left-0 md:-left-10 relative">
                           &#8592; Previous
                         </span>
                       </button>
@@ -82,13 +71,12 @@ export default function Home({ projects }) {
                   renderArrowNext={(onClickHandler, hasNext, label) =>
                     hasNext && (
                       <button
-                        className="next-button opacity-0 hover:opacity-100 transition-opacity"
+                        className="next-button opacity-0 hover:opacity-100 transition-opacity right-0"
                         type="button"
                         onClick={onClickHandler}
                         title={label}
-                        style={{ ...arrowStyles, right: 0 }}
                       >
-                        <span className="button-text text-3xl left-20 relative">
+                        <span className="button-text text-3xl right-0 md:-right-10 relative">
                           Next &#8594;{" "}
                         </span>
                       </button>
