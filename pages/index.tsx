@@ -47,7 +47,10 @@ export default function Home({ projects }) {
       <div id="work" className="container mx-auto my-auto">
         <div className="grid grid-cols-12">
           {projects.map(({ overviews, slug }) => (
-            <figure key={slug} className="card mb-28 col-start-2 col-span-10">
+            <figure
+              key={slug}
+              className="card mb-14 md:mb-28 col-span-12 sm:col-start-2 sm:col-span-10"
+            >
               <div className="carousel">
                 <Carousel
                   showThumbs={false}
@@ -62,7 +65,7 @@ export default function Home({ projects }) {
                         onClick={onClickHandler}
                         title={label}
                       >
-                        <span className="button-text text-3xl left-0 md:-left-10 relative">
+                        <span className="button-text text-xl md:text-3xl left-0 md:-left-10 relative">
                           &#8592; Previous
                         </span>
                       </button>
@@ -76,7 +79,7 @@ export default function Home({ projects }) {
                         onClick={onClickHandler}
                         title={label}
                       >
-                        <span className="button-text text-3xl right-0 md:-right-10 relative">
+                        <span className="button-text text-xl md:text-3xl right-0 md:-right-10 relative">
                           Next &#8594;{" "}
                         </span>
                       </button>
@@ -85,24 +88,20 @@ export default function Home({ projects }) {
                 >
                   {overviews.map((overview) => (
                     <>
-                      <div
-                        className="image-wrapper"
-                        key={overview?.image.id}
-                        style={{ width: "1135px", height: "635px" }}
-                      >
+                      <div className="image-wrapper" key={overview?.image.id}>
                         <Image
                           image={overview?.image}
                           alt="Picture of the author"
                         />
                       </div>
-                      <div className="flex justify-between pt-5">
+                      <div className="flex justify-between pt-5 px-4 sm:px-0">
                         <figcaption className="text-left">
                           <p className="text-lg">{overview.title}</p>
                           <p className="text-lg text-copy-1">
                             {overview.description}
                           </p>
                         </figcaption>
-                        <Link href={`/${slug}`} text="Overview" />
+                        <Link href={`/${slug}`} text="Case study" />
                       </div>
                     </>
                   ))}

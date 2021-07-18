@@ -8,16 +8,25 @@
   .cms-content > h3,
   .cms-content > h4,
   .cms-content > h5 {
-    @apply font-normal mb-1 text-white text-lg;
+    @apply font-normal text-white text-lg;
+  }
+  .cms-content > h1,
+  .cms-content > h2 {
+    @apply text-3xl mb-2;
+  }
+  .cms-content > h3,
+  .cms-content > h4,
+  .cms-content > h5 {
+    @apply text-lg mb-1;
   }
   .cms-content > p {
     @apply font-light;
   }
-  .carousel-slider:hover .image-wrapper {
-    @apply opacity-50 bg-black transition-opacity;
+  .cms-content a {
+    @apply text-white;
   }
   .prev-button,
   .next-button {
-    @apply absolute z-10 top-0 bottom-0 w-1/2 h-[635px];
+    @apply absolute z-10 top-0 bottom-0 w-1/2 h-[calc(100%-76px)];
   }
 }

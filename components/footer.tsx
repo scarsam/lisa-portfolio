@@ -2,7 +2,7 @@ import Link from "components/link";
 
 const Footer = () => {
   return (
-    <footer className="pb-8 grid grid-cols-12 gap-2 container mx-auto">
+    <footer className="pb-8 grid grid-cols-12 gap-2 container mx-auto px-4">
       <div className="col-span-12 md:col-span-1 mb-4 md:mb-0">
         <p className="text-copy-1 pb-1">Social</p>
         <Link

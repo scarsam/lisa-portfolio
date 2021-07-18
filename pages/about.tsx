@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import Link from "components/link";
 import { AboutApi } from "lib/api";
 
 export async function getStaticProps() {
@@ -45,8 +46,25 @@ export default function About({ about, images }) {
       />
       <div className="container mx-auto my-auto">
         <div className="flex flex-col-reverse md:grid grid-cols-12 mb-28">
-          <div className="col-start-2 col-end-11 md:col-end-6 text-3xl cms-content prose text-white">
-            <ReactMarkdown source={about} />
+          <div className="col-start-2 col-end-11 md:col-end-6 mx-4 sm:mx-0">
+            <span className="text-xl cms-content prose text-white">
+              <ReactMarkdown source={about} />
+            </span>
+            <div className="mt-10 text-3xl">
+              <Link
+                className="block mb-6"
+                href="mailto:hello@lisaskole.com"
+                text="Say hey"
+                large
+              />
+              <p className="mb-3 font-thin">Prefer to copy the email?</p>
+              <Link
+                className="block"
+                href="mailto:hello@lisaskole.com"
+                text="hello@lisaskole.design"
+                large
+              />
+            </div>
           </div>
           <div className="col-start-2 md:col-start-7 col-end-11">
             {images.map((image) => (
