@@ -69,7 +69,7 @@ export default function About({ about, images }) {
             {images.map(({ id, url, mimeType }) => (
               <div key={id} className="mb-14">
                 {mimeType === "video/mp4" ? (
-                  <video autoPlay loop muted>
+                  <video autoPlay loop muted playsInline>
                     <source src={url} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>

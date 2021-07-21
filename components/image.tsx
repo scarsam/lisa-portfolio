@@ -6,7 +6,7 @@ const ImageComponent = ({ image, alt, horiztonal = true }) => {
     : { width: "532px", height: "762px" };
 
   return image?.mimeType === "video/mp4" ? (
-    <video autoPlay loop muted>
+    <video autoPlay loop muted playsInline>
       <source src={image.url} type="video/mp4" />
       Your browser does not support the video tag.
     </video>
