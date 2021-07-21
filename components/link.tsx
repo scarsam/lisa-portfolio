@@ -21,7 +21,11 @@ const Link = ({
         } ${className}`}
       >
         {text}
-        <span className={`${large ? "text-2xl pl-1" : "text-lg pl-0.5"}`}>
+        <span
+          className={`${
+            large ? "text-lg md:text-2xl pl-1" : "text-md md:text-lg pl-0.5"
+          }`}
+        >
           &#8594;
         </span>
       </a>

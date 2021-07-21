@@ -18,6 +18,7 @@ const AboutApi = async () => {
         images {
           id
           url
+          mimeType
         }
       }
     }
@@ -38,6 +39,7 @@ const ProjectsApi = async () => {
           image {
             url
             id
+            mimeType
           }
         }
       }
@@ -63,6 +65,7 @@ const ProjectApi = async (slug) => {
             image {
               id
               url
+              mimeType
             }
           }
           ... on HorizontalImageOnlyComponent {
@@ -70,6 +73,7 @@ const ProjectApi = async (slug) => {
             id
             image {
               url
+              mimeType
             }
           }
           ... on Headline {
@@ -83,6 +87,7 @@ const ProjectApi = async (slug) => {
             verticalText
             image {
               url
+              mimeType
             }
           }
         }

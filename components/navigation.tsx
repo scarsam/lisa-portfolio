@@ -16,11 +16,17 @@ const Navigation: React.VFC = () => {
           <Link
             white
             large
-            className="text-3xl md:pr-4"
+            className="text-xl md:text-3xl md:pr-4"
             href="/#work"
             text="Work"
           />
-          <Link white large className="text-3xl" href="/about" text="Info" />
+          <Link
+            white
+            large
+            className="text-xl md:text-3xl"
+            href="/about"
+            text="Info"
+          />
         </div>
       </header>
     </nav>

@@ -52,12 +52,11 @@ export default function About({ about, images }) {
             </span>
             <div className="mt-10 text-3xl">
               <Link
-                className="block mb-6"
+                className="block mb-2"
                 href="mailto:hello@lisaskole.com"
                 text="Say hey"
                 large
               />
-              <p className="mb-3 font-thin">Prefer to copy the email?</p>
               <Link
                 className="block"
                 href="mailto:hello@lisaskole.com"
@@ -67,16 +66,23 @@ export default function About({ about, images }) {
             </div>
           </div>
           <div className="col-start-2 md:col-start-7 col-end-11">
-            {images.map((image) => (
-              <div key={image.id} className="mb-14">
-                <Image
-                  {...{ width: "532px", height: "762px" }}
-                  placeholder="blur"
-                  blurDataURL={image.url}
-                  src={image.url}
-                  alt="Lisa Skole"
-                  layout="responsive"
-                />
+            {images.map(({ id, url, mimeType }) => (
+              <div key={id} className="mb-14">
+                {mimeType === "video/mp4" ? (
+                  <video autoPlay loop muted>
+                    <source src={url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <Image
+                    {...{ width: "532px", height: "762px" }}
+                    placeholder="blur"
+                    blurDataURL={url}
+                    src={url}
+                    alt="Lisa Skole"
+                    layout="responsive"
+                  />
+                )}
               </div>
             ))}
           </div>
