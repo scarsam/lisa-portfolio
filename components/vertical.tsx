@@ -8,7 +8,7 @@ const VerticalComponent = ({ verticalText, image }) => {
         <ReactMarkdown source={verticalText} />
       </div>
       <div className="col-span-12 md:col-span-5 md:col-start-5">
-        <Image horiztonal={false} image={image} alt="Picture of the author" />
+        <Image horiztonal={false} image={image} alt="Project image" />
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-const ImageComponent = ({ image, mimeType, alt, horiztonal = true }) => {
+const ImageComponent = ({ image, alt, horiztonal = true }) => {
   const dimensions = horiztonal
     ? { width: "1130px", height: "635px" }
     : { width: "532px", height: "762px" };
 
-  return mimeType === "video/mp4" ? (
+  return image?.mimeType === "video/mp4" ? (
     <video autoPlay loop muted>
       <source src={image.url} type="video/mp4" />
       Your browser does not support the video tag.

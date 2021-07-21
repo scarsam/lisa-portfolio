@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 const HorizonalComponent = ({ horizontalText, image }) => {
   return (
     <div className="mb-14 md:mb-28">
-      <Image image={image} alt="Picture of the author" />
+      <Image image={image} alt="Project image" />
       <div className="grid gap-5 grid-cols-10 pt-4">
         {horizontalText.map((content, index) => (
           <div
