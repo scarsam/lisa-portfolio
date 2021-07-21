@@ -33,7 +33,9 @@ const ProjectsApi = async () => {
     query getProjects {
       projects {
         slug
+        id
         overviews {
+          id
           description
           title
           image {

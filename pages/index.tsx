@@ -46,9 +46,9 @@ export default function Home({ projects }) {
       />
       <div id="work" className="container mx-auto my-auto">
         <div className="grid grid-cols-12">
-          {projects.map(({ overviews, slug }) => (
+          {projects.map(({ id, overviews, slug }) => (
             <figure
-              key={slug}
+              key={id}
               className="card mb-14 md:mb-28 col-span-12 sm:col-start-2 sm:col-span-10"
             >
               <div className="carousel">
@@ -87,7 +87,7 @@ export default function Home({ projects }) {
                   }
                 >
                   {overviews.map((overview) => (
-                    <>
+                    <div key={overview.id}>
                       <div className="image-wrapper" key={overview?.image.id}>
                         <Image
                           image={overview?.image}
@@ -103,7 +103,7 @@ export default function Home({ projects }) {
                         </figcaption>
                         <Link href={`/${slug}`} text="Case study" />
                       </div>
-                    </>
+                    </div>
                   ))}
                 </Carousel>
               </div>

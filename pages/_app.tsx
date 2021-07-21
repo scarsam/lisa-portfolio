@@ -3,15 +3,11 @@ import "@fontsource/chivo/400.css";
 import "@fontsource/chivo/300.css";
 import "@fontsource/inter";
 import "../styles/tailwind.css";
-
+import Navigation from "components/navigation";
+import Footer from "components/footer";
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
 });
-
-// import "tailwindcss/tailwind.css";
-
-import Navigation from "components/navigation";
-import Footer from "components/footer";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -25,6 +21,7 @@ function MyApp({ Component, pageProps }) {
       </style>
       <span className="mix-blend-difference relative z-50">
         <AnimatedCursor
+          // @ts-ignore
           innerSize={20}
           outerSize={0}
           color="255, 255, 255"
