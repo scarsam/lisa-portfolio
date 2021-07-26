@@ -49,7 +49,7 @@ export default function Project({ slug, title, project }) {
         );
       case "HorizontalImageOnlyComponent":
         return (
-          <div className="mb-7 md:mb-14">
+          <div className="mb-10">
             <Image
               horiztonal={false}
               image={component.image}

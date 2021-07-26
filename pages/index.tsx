@@ -49,7 +49,7 @@ export default function Home({ projects }) {
           {projects.map(({ id, overviews, slug }) => (
             <figure
               key={id}
-              className="card mb-14 md:mb-28 col-span-12 sm:col-start-2 sm:col-span-10"
+              className="card mb-14 col-span-12 sm:col-start-2 sm:col-span-10"
             >
               <div className="carousel">
                 <Carousel

@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 const VerticalComponent = ({ verticalText, image }) => {
   return (
-    <div className="flex flex-col-reverse md:grid gap-5 grid-cols-10 pt-4 mb-14 md:mb-28">
+    <div className="flex flex-col-reverse md:grid gap-5 grid-cols-10 pt-4 mb-14">
       <div className="col-span-12 md:col-span-3 text-lg cms-content text-white prose">
         <ReactMarkdown source={verticalText} />
       </div>

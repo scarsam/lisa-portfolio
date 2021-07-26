@@ -50,17 +50,11 @@ export default function About({ about, images }) {
             <span className="text-xl cms-content prose text-white">
               <ReactMarkdown source={about} />
             </span>
-            <div className="mt-10 text-3xl">
+            <div className="mt-10">
               <Link
-                className="block mb-2"
+                className="block mb-2 text-3xl"
                 href="mailto:hello@lisaskole.com"
                 text="Say hey"
-                large
-              />
-              <Link
-                className="block"
-                href="mailto:hello@lisaskole.com"
-                text="hello@lisaskole.design"
                 large
               />
             </div>
