@@ -15,7 +15,7 @@ const HorizonalComponent = ({ horizontalText, image }) => {
       case 4:
         return "col-span-12 md:col-span-4 order-5 md:order-none";
       default:
-        return null;
+        return "";
     }
   };
 

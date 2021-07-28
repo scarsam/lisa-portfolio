@@ -51,7 +51,7 @@ export default function Home({ projects }) {
               key={id}
               className="card mb-14 col-span-12 sm:col-start-2 sm:col-span-10"
             >
-              <div className="carousel">
+              <div className="carousel max-w-[1130px] m-auto">
                 <Carousel
                   showThumbs={false}
                   showIndicators={false}

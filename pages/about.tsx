@@ -54,7 +54,7 @@ export default function About({ about, images }) {
               <Link
                 className="block mb-2 text-3xl"
                 href="mailto:hello@lisaskole.com"
-                text="Say hey"
+                text="Say hello"
                 large
               />
             </div>
