@@ -3,6 +3,7 @@ import { ProjectApi, ProjectsApi } from "lib/api";
 import HorizontalComponent from "components/horizontal";
 import VerticalComponent from "components/vertical";
 import Image from "components/image";
+import FadeInWhenVisible from "components/fadeInWhenVisible";
 
 export async function getStaticPaths() {
   const projects = await ProjectsApi();
@@ -96,7 +97,9 @@ export default function Project({ slug, title, project }) {
         <div className="grid-cols-12 grid">
           {project.map((component) => (
             <div key={component.id} className="grid col-start-2 col-span-10">
-              {renderComponent(component)}
+              <FadeInWhenVisible>
+                {renderComponent(component)}
+              </FadeInWhenVisible>
             </div>
           ))}
         </div>
